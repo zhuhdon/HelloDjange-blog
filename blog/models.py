@@ -1,4 +1,7 @@
+import markdown
+
 from django.contrib.auth.models import User
+from django.utils.html import strip_tags
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
@@ -35,8 +38,13 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         self.updated = timezone.now()
-        super().save(*args, **kwargs)
+        md = markdown.Markdown(extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ])
 
+        self.excerpt = strip_tags(md.convert(self.body))[:54]
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = '文章'
