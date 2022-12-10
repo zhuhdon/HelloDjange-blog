@@ -5,7 +5,7 @@ from ..models import Post, Category, Tag
 
 register = template.Library()
 
-@register.inclusion_tag('blog/inclusions/_recent_post.html', takes_context=True)
+@register.inclusion_tag('blog/inclusions/_recent_posts.html', takes_context=True)
 def show_recent_posts(context, num=5):
     return {
         'recent_post_list': Post.objects.all().order_by('-created')[:num],
@@ -14,7 +14,7 @@ def show_recent_posts(context, num=5):
 @register.inclusion_tag('blog/inclusions/_archives.html', takes_context=True)
 def show_archives(context):
     return {
-        'date_list': Post.objecrs.dates('created', 'month', order='DESC'),
+        'date_list': Post.objects.dates('created', 'month', order='DESC'),
     }
 
 @register.inclusion_tag('blog/inclusions/_tags.html', takes_context=True)
