@@ -25,7 +25,7 @@ SECRET_KEY = 'sp%$n2h(_t5oefyj+yxs022e-c!!6w^!$%-3ztq&!#_%$zc_@r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.haodoni.top']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '47.116.13.205', 'localhost', '.haodoni.top']
 
 
 # Application definition
